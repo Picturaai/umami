@@ -59,43 +59,149 @@ function Header() {
   );
 }
 
+function DashboardMockup() {
+  return (
+    <div className="relative mx-auto max-w-5xl mt-16">
+      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 pointer-events-none" />
+      <div className="rounded-2xl border border-neutral-200 bg-white shadow-2xl shadow-neutral-900/10 overflow-hidden">
+        {/* Browser Chrome */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-neutral-100 border-b border-neutral-200">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-400" />
+            <div className="w-3 h-3 rounded-full bg-yellow-400" />
+            <div className="w-3 h-3 rounded-full bg-green-400" />
+          </div>
+          <div className="flex-1 mx-4">
+            <div className="bg-white rounded-md px-3 py-1.5 text-sm text-neutral-500 border border-neutral-200 max-w-md mx-auto">
+              analytics.pictura.com/dashboard
+            </div>
+          </div>
+        </div>
+        
+        {/* Dashboard Content */}
+        <div className="flex">
+          {/* Sidebar */}
+          <div className="w-56 bg-neutral-900 p-4 min-h-[400px] hidden md:block">
+            <div className="flex items-center gap-3 mb-8">
+              <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+                <path d="M22 46V18h10c3.5 0 6.3 1.2 8.4 3.5 2.1 2.3 3.1 5.2 3.1 8.5s-1 6.2-3.1 8.5C38.3 40.8 35.5 42 32 42h-4" stroke="#C87941" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                <circle cx="44" cy="20" r="3" fill="#FFD700"/>
+              </svg>
+              <span className="text-white font-semibold">Pictura</span>
+            </div>
+            <nav className="space-y-1">
+              {['Dashboard', 'Realtime', 'Pages', 'Referrers', 'Events'].map((item, i) => (
+                <div key={item} className={`px-3 py-2 rounded-lg text-sm ${i === 0 ? 'bg-[#C87941] text-white' : 'text-neutral-400 hover:text-white'}`}>
+                  {item}
+                </div>
+              ))}
+            </nav>
+          </div>
+          
+          {/* Main Content */}
+          <div className="flex-1 p-6 bg-neutral-50">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-lg font-semibold text-neutral-900">mywebsite.com</h2>
+                <p className="text-sm text-neutral-500">Last 7 days</p>
+              </div>
+              <div className="flex gap-2">
+                <div className="px-3 py-1.5 bg-white rounded-lg border border-neutral-200 text-sm text-neutral-600">
+                  Today
+                </div>
+                <div className="px-3 py-1.5 bg-[#C87941] rounded-lg text-sm text-white font-medium">
+                  7 Days
+                </div>
+              </div>
+            </div>
+            
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              {[
+                { label: 'Visitors', value: '12,847', change: '+24%' },
+                { label: 'Page Views', value: '48,291', change: '+18%' },
+                { label: 'Bounce Rate', value: '32%', change: '-5%' },
+                { label: 'Avg. Time', value: '3m 24s', change: '+12%' },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-white p-4 rounded-xl border border-neutral-200">
+                  <p className="text-sm text-neutral-500 mb-1">{stat.label}</p>
+                  <p className="text-2xl font-bold text-neutral-900">{stat.value}</p>
+                  <p className={`text-sm ${stat.change.startsWith('+') ? 'text-green-600' : 'text-red-500'}`}>
+                    {stat.change} vs last week
+                  </p>
+                </div>
+              ))}
+            </div>
+            
+            {/* Chart Placeholder */}
+            <div className="bg-white p-6 rounded-xl border border-neutral-200">
+              <h3 className="text-sm font-medium text-neutral-900 mb-4">Visitors Overview</h3>
+              <div className="flex items-end gap-1 h-32">
+                {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((height, i) => (
+                  <div key={i} className="flex-1 bg-[#C87941]/20 rounded-t hover:bg-[#C87941]/40 transition-colors" style={{ height: `${height}%` }}>
+                    <div className="w-full bg-[#C87941] rounded-t" style={{ height: `${Math.random() * 40 + 30}%` }} />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between mt-2 text-xs text-neutral-400">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   return (
-    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-neutral-50 to-white">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-8">
-          <Shield className="w-4 h-4" />
-          100% Privacy-Focused
+    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-8">
+            <Shield className="w-4 h-4" />
+            100% Privacy-Focused
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 leading-tight mb-6 text-balance">
+            Analytics made{' '}
+            <span className="text-[#C87941]">simple</span> and{' '}
+            <span className="text-[#C87941]">secure</span>
+          </h1>
+
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto mb-10 leading-relaxed text-pretty">
+            Understand your visitors without compromising their privacy. Pictura Analytics is the
+            free, open-source alternative to Google Analytics that respects user privacy.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/signup"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#C87941] text-white font-semibold rounded-xl hover:bg-[#B06835] transition-all shadow-lg shadow-[#C87941]/20"
+            >
+              Get started - it&apos;s free
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-neutral-100 text-neutral-900 font-semibold rounded-xl hover:bg-neutral-200 transition-colors"
+            >
+              View demo
+            </Link>
+          </div>
+
+          <p className="text-sm text-neutral-500 mt-6">No credit card required. Free forever.</p>
         </div>
-
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 leading-tight mb-6 text-balance">
-          Analytics made{' '}
-          <span className="text-[#C87941]">simple</span> and{' '}
-          <span className="text-[#C87941]">secure</span>
-        </h1>
-
-        <p className="text-xl text-neutral-600 max-w-3xl mx-auto mb-10 leading-relaxed text-pretty">
-          Understand your visitors without compromising their privacy. Pictura Analytics is the
-          free, open-source alternative to Google Analytics that respects user privacy.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/signup"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#C87941] text-white font-semibold rounded-xl hover:bg-[#B06835] transition-all shadow-lg shadow-[#C87941]/20"
-          >
-            Get started - it&apos;s free
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-neutral-100 text-neutral-900 font-semibold rounded-xl hover:bg-neutral-200 transition-colors"
-          >
-            View demo
-          </Link>
-        </div>
-
-        <p className="text-sm text-neutral-500 mt-6">No credit card required. Free forever.</p>
+        
+        <DashboardMockup />
       </div>
     </section>
   );

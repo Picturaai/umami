@@ -1,4 +1,4 @@
-import type { Report } from '@/generated/prisma/client';
+import type { Report } from '@prisma/client';
 import type { Auth } from '@/lib/types';
 import { canViewWebsite } from './website';
 

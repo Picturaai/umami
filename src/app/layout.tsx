@@ -43,7 +43,8 @@ export default function ({ children }) {
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Umami',
-    default: 'Umami',
+    template: '%s | Pictura Analytics',
+    default: 'Pictura Analytics - Privacy-Focused Web Analytics',
   },
+  description: 'Free, privacy-focused web analytics by Imoogle Labs. Simple, secure, and no tracking - unlike Google Analytics.',
 };

@@ -1,3 +1,4 @@
+'use client';
 import {
   Column,
   Form,
@@ -18,10 +19,10 @@ import { PicturaLogo } from '@/components/svg';
 import { setClientAuthToken } from '@/lib/client';
 import { setUser } from '@/store/app';
 
-export function LoginForm() {
+export function SignupForm() {
   const { formatMessage, labels, getErrorMessage } = useMessages();
   const router = useRouter();
-  const { mutateAsync, error } = useUpdateQuery('/auth/login');
+  const { mutateAsync, error } = useUpdateQuery('/auth/signup');
 
   const handleSubmit = async (data: any) => {
     await mutateAsync(data, {
@@ -39,27 +40,40 @@ export function LoginForm() {
         <PicturaLogo />
       </Icon>
       <Column alignItems="center" gap="2">
-        <Heading>Pictura Analytics</Heading>
-        <Text color="secondary">Sign in to your account</Text>
+        <Heading>Create your account</Heading>
+        <Text color="secondary">Join Pictura Analytics for free</Text>
       </Column>
       <Form onSubmit={handleSubmit} error={getErrorMessage(error)}>
         <FormField
           label={formatMessage(labels.username)}
           data-test="input-username"
           name="username"
-          rules={{ required: formatMessage(labels.required) }}
+          rules={{ 
+            required: formatMessage(labels.required),
+            minLength: {
+              value: 3,
+              message: 'Username must be at least 3 characters'
+            }
+          }}
         >
-          <TextField autoComplete="username" />
+          <TextField autoComplete="username" placeholder="Choose a username" />
         </FormField>
 
         <FormField
           label={formatMessage(labels.password)}
           data-test="input-password"
           name="password"
-          rules={{ required: formatMessage(labels.required) }}
+          rules={{ 
+            required: formatMessage(labels.required),
+            minLength: {
+              value: 8,
+              message: 'Password must be at least 8 characters'
+            }
+          }}
         >
-          <PasswordField autoComplete="current-password" />
+          <PasswordField autoComplete="new-password" placeholder="Create a password" />
         </FormField>
+
         <FormButtons>
           <FormSubmitButton
             data-test="button-submit"
@@ -67,14 +81,14 @@ export function LoginForm() {
             style={{ flex: 1 }}
             isDisabled={false}
           >
-            {formatMessage(labels.login)}
+            Create account
           </FormSubmitButton>
         </FormButtons>
       </Form>
       <Row gap="2">
-        <Text color="secondary">Don&apos;t have an account?</Text>
-        <Link href="/signup" style={{ color: '#C87941', fontWeight: 500 }}>
-          Sign up
+        <Text color="secondary">Already have an account?</Text>
+        <Link href="/login" style={{ color: '#C87941', fontWeight: 500 }}>
+          Sign in
         </Link>
       </Row>
     </Column>

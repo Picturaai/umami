@@ -1,4 +1,4 @@
-import { Prisma } from '@/generated/prisma/client';
+import { Prisma } from '@prisma/client';
 import { ROLES } from '@/lib/constants';
 import { getRandomChars } from '@/lib/generate';
 import prisma from '@/lib/prisma';

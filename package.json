@@ -11,6 +11,7 @@
   },
   "type": "module",
   "scripts": {
+    "postinstall": "prisma generate || true",
     "dev": "next dev -p 3001 --turbo",
     "build": "npm-run-all check-env build-db check-db build-tracker build-geo build-app",
     "start": "next start",
@@ -25,7 +26,7 @@
     "build-prisma-client": "node scripts/build-prisma-client.js",
     "build-lang": "npm-run-all format-lang compile-lang download-country-names download-language-names clean-lang",
     "build-geo": "node scripts/build-geo.js",
-    "build-db": "npm-run-all build-db-client build-prisma-client",
+    "build-db": "npm-run-all build-db-client",
     "build-db-schema": "prisma db pull",
     "build-db-client": "prisma generate",
     "update-tracker": "node scripts/update-tracker.js",

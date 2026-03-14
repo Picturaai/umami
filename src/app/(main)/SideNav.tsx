@@ -14,7 +14,7 @@ import { Globe, Grid2x2, LinkIcon, PanelLeft } from '@/components/icons';
 import { LanguageButton } from '@/components/input/LanguageButton';
 import { NavButton } from '@/components/input/NavButton';
 import { PanelButton } from '@/components/input/PanelButton';
-import { Logo } from '@/components/svg';
+import { PicturaLogo } from '@/components/svg';
 
 export function SideNav(props: SidebarProps) {
   const { formatMessage, labels } = useMessages();
@@ -52,8 +52,8 @@ export function SideNav(props: SidebarProps) {
     <Sidebar {...props} isCollapsed={isCollapsed || hasNav} backgroundColor>
       <SidebarSection onClick={() => setIsCollapsed(false)}>
         <SidebarHeader
-          label="umami"
-          icon={isCollapsed && !hasNav ? <PanelLeft /> : <Logo />}
+          label="Pictura"
+          icon={isCollapsed && !hasNav ? <PanelLeft /> : <PicturaLogo />}
           style={{ maxHeight: 40 }}
         >
           {!isCollapsed && !hasNav && <PanelButton />}

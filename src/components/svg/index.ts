@@ -18,6 +18,7 @@ export { default as Location } from './Location';
 export { default as Lock } from './Lock';
 export { default as Logo } from './Logo';
 export { default as LogoWhite } from './LogoWhite';
+export { default as PicturaLogo } from './PicturaLogo';
 export { default as Magnet } from './Magnet';
 export { default as Money } from './Money';
 export { default as Network } from './Network';
